@@ -4,7 +4,8 @@ new Vue({
     el: "#app",
     data: {
         filteredData: [],
-        albumsList: []
+        albumsList: [],
+        musicGender: [],
     },
     methods: {
         getGeneresList() {
@@ -15,9 +16,10 @@ new Vue({
                     finalList.push(element.genre)
                 }
             })
+            
         },
         onSelectChange(event) {
-            const select = event.currentTarget
+            const select = event.currentTarget;
             
 
         }
@@ -37,6 +39,9 @@ new Vue({
                     "year"
                 */
                 const albumsList = resp.data.response;
+
+                /*DEVO RECUPERARE DATI DA QUA, MA COME FARE ? */
+
 
                 /*
                     una  volta ricevuti i dati dal server, 
