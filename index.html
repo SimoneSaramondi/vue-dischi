@@ -21,13 +21,13 @@
                 <select name="" id="" @change="onSelectChange" v-model="genreToFilter">
 
                     <option value="">Tutti i generi </option>
-                    <option v-for="genre in albumsList" value="genre">{{genre}}</option>
+                    <option v-for="genre in finalList" value="genre">{{genre}}</option>
 
                 </select>
             </h1>
     
             <div class="albums-container">
-                <div class="album" v-for="album in filteredData">
+                <div class="album" v-for="album in onSelectChange">
                     <!-- copertina -->
                     <img :src="album.poster">
     
