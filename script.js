@@ -5,11 +5,12 @@ new Vue({
     data: {
         filteredData: [],
         albumsList: [],
-        musicGender: [],
+        genreToFilter: "",
     },
     methods: {
         getGeneresList() {
-            const finalList = []
+
+            const finalList = [];
 
             albumsList.forEach((element) => {
                 if(!finalList.includes(element.genre)){
@@ -18,36 +19,34 @@ new Vue({
             })
             
         },
-        onSelectChange(event) {
-            const select = event.currentTarget;
-            
+        onSelectChange() {
 
-        }
+            if(this.genreToFilter === ""){
+                this.filteredData = this.albumsList
+
+                return
+            }
+
+            const newFilteredData = this.albumsList.filter((album) => {
+                return album.genre === this.genreToFilter
+            })    
+            this.filteredData = newFilteredData;      
+
+        },
+
+
     },
     mounted() {
-        /*
-        Tramite axios recuperiamo i dati del server.
-        */
+        
         axios.get("https://flynn.boolean.careers/exercises/api/array/music")
             .then((resp) => {
-                /*
-                  Array di oggetti con le seguenti chiavi
-                    "poster"
-                    "title"
-                    "author"
-                    "genre"
-                    "year"
-                */
+                
                 const albumsList = resp.data.response;
 
-                /*DEVO RECUPERARE DATI DA QUA, MA COME FARE ? */
+                this.albumsList.push(...albumsList);
+                //this.filteredData.push(...albumsList)
 
-
-                /*
-                    una  volta ricevuti i dati dal server, 
-                    prima ancora di salvarli nella variabile di vue, 
-                    posso eseguire il sort in modo da salvare poi i dati già ordinati
-                */
+                this.getGeneresList();
             });
     }
 })

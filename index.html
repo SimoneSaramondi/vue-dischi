@@ -18,83 +18,30 @@
             <h1>
                 My albums
 
-                <select name="" id="" @change="onSelectChange">
+                <select name="" id="" @change="onSelectChange" v-model="genreToFilter">
 
-                    <option v-for="" value=""></option>
+                    <option value="">Tutti i generi </option>
+                    <option v-for="genre in albumsList" value="genre">{{genre}}</option>
 
                 </select>
             </h1>
     
             <div class="albums-container">
-                <div class="album">
+                <div class="album" v-for="album in filteredData">
                     <!-- copertina -->
-                    <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg">
+                    <img :src="album.poster">
     
                     <!-- Titolo album -->
-                    <h3>Titol album</h3>
+                    <h3>{{album.title}}</h3>
     
                     <!-- Nome Artista -->
-                    <h4>Nome artista</h4>
+                    <h4>{{album.author}}</h4>
     
                     <!-- Anno album -->
-                    <span>2021</span>
+                    <span>{{album.year}}</span>
                 </div>
     
-                <div class="album">
-                    <!-- copertina -->
-                    <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg">
-    
-                    <!-- Titolo album -->
-                    <h3>Titol album</h3>
-    
-                    <!-- Nome Artista -->
-                    <h4>Nome artista</h4>
-    
-                    <!-- Anno album -->
-                    <span>2021</span>
-                </div>
-    
-                <div class="album">
-                    <!-- copertina -->
-                    <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg">
-    
-                    <!-- Titolo album -->
-                    <h3>Titol album</h3>
-    
-                    <!-- Nome Artista -->
-                    <h4>Nome artista</h4>
-    
-                    <!-- Anno album -->
-                    <span>2021</span>
-                </div>
-    
-                <div class="album">
-                    <!-- copertina -->
-                    <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg">
-    
-                    <!-- Titolo album -->
-                    <h3>Titol album</h3>
-    
-                    <!-- Nome Artista -->
-                    <h4>Nome artista</h4>
-    
-                    <!-- Anno album -->
-                    <span>2021</span>
-                </div>
-    
-                <div class="album">
-                    <!-- copertina -->
-                    <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg">
-    
-                    <!-- Titolo album -->
-                    <h3>Titol album</h3>
-    
-                    <!-- Nome Artista -->
-                    <h4>Nome artista</h4>
-    
-                    <!-- Anno album -->
-                    <span>2021</span>
-                </div>
+               
     
             </div>
     
